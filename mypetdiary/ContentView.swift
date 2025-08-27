@@ -7,7 +7,7 @@
 import SwiftUI
 import Photos
 
-struct CatEntry: Identifiable {
+struct PetEntry: Identifiable {
     let id = UUID()
     var date: Date
     var photo: Image?
@@ -17,9 +17,9 @@ struct CatEntry: Identifiable {
 
 struct ContentView: View {
     @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = true
-    @State private var showAddEntryView = false
-    @State private var inputImage: UIImage?
-    @State private var entries: [CatEntry] = []
+    @State var showAddEntryView = false
+    @State var inputImage: UIImage?
+    @State private var entries: [PetEntry] = []
     @State private var editMode: EditMode = .inactive
     @State private var selection: Set<UUID> = []
     
@@ -27,41 +27,44 @@ struct ContentView: View {
         if isFirstLaunch {
             Welcome()
         } else {
-            NavigationView {
-                VStack {
-                    List {
-                        ForEach(entries) { entry in
-                            entryRow(for: entry)
-                        }
-                        .onDelete(perform: deleteEntry) // This is where it goes
-                        
-                    }
-                    .id(UUID()) // Add this line to force re-rendering
-                    .navigationTitle("Pet Diary Edit")
+            NavigationStack {
+                Text("My Pet Diary")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .font(.custom("DynaPuff", size: 20))
+                    .foregroundColor(Color(.mymutedpurple))
                     .toolbar {
+                        Text("hello")
                         EditButton()
                     }
-                    
-                    .environment(\.editMode, $editMode)
-                    .listStyle(.plain)
-                    .sheet(isPresented: $showAddEntryView) {
-                        AddEntryView(selectedImage: $inputImage, entries: $entries)
-                            .onDisappear {
-                                inputImage = nil
-                            }
-                    }
-                    
-                    Button("Add New Entry") {
-                        showAddEntryView = true
+                List {
+                    ForEach(entries) { entry in
+                        entryRow(for: entry)
                     }
                 }
+                
+                .id(UUID())
+                .environment(\.editMode, $editMode)
+                .listStyle(.plain)
+                .sheet(isPresented: $showAddEntryView) {
+                    AddEntryView(selectedImage: $inputImage, entries: $entries)
+                        .onDisappear {
+                            inputImage = nil
+                        }
+                }
+                
+                Button("Add New Entry") {
+                    showAddEntryView = true
+                }   
+                .font(.custom("DynaPuff", size: 20))
+                .foregroundColor(Color(.mymutedpurple))
             }
+            
         }
     }
         
 
     // Function to create the HStack for each entry
-    private func entryRow(for entry: CatEntry) -> some View {
+    private func entryRow(for entry: PetEntry) -> some View {
         HStack {
             VStack(alignment: .leading) {
                 Text(entry.date, style: .date)
@@ -96,8 +99,8 @@ struct ContentView: View {
             }
         }
     }
-    
-    func deleteEntry(at offsets: IndexSet) {
-        entries.remove(atOffsets: offsets)
-    }
+}
+
+#Preview {
+    ContentView()
 }

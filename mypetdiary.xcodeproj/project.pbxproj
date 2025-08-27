@@ -6,11 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		F4C06E152D12538F00B0860D /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C06E142D12538F00B0860D /* Welcome.swift */; };
-		F4FC2C9F2D0CCCA200674164 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FC2C9E2D0CCCA200674164 /* ImagePicker.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		F4FC2C7E2D0CC8AA00674164 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -29,11 +24,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F4C06E142D12538F00B0860D /* Welcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Welcome.swift; sourceTree = "<group>"; };
 		F4FC2C6D2D0CC8A900674164 /* mypetdiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mypetdiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FC2C7D2D0CC8AA00674164 /* mypetdiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mypetdiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FC2C872D0CC8AA00674164 /* mypetdiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mypetdiaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F4FC2C9E2D0CCCA200674164 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -95,8 +88,6 @@
 		F4FC2C642D0CC8A900674164 = {
 			isa = PBXGroup;
 			children = (
-				F4C06E142D12538F00B0860D /* Welcome.swift */,
-				F4FC2C9E2D0CCCA200674164 /* ImagePicker.swift */,
 				F4FC2C6F2D0CC8A900674164 /* mypetdiary */,
 				F4FC2C802D0CC8AA00674164 /* mypetdiaryTests */,
 				F4FC2C8A2D0CC8AA00674164 /* mypetdiaryUITests */,
@@ -258,8 +249,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4C06E152D12538F00B0860D /* Welcome.swift in Sources */,
-				F4FC2C9F2D0CCCA200674164 /* ImagePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,8 +414,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mypetdiary/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSCameraUsageDescription = "To allow you to take photos of your cats for your diary entries";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "To enable you to import photos of your cat from your library.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "To allow you to take photos of your pets for your diary entries";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "To enable you to import photos of your pet from your library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -459,8 +448,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mypetdiary/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSCameraUsageDescription = "To allow you to take photos of your cats for your diary entries";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "To enable you to import photos of your cat from your library.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "To allow you to take photos of your pets for your diary entries";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "To enable you to import photos of your pet from your library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

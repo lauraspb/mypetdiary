@@ -8,67 +8,78 @@
 import SwiftUI
 import PhotosUI
 
+enum ImageSource: Identifiable {
+    case camera
+    case photoLibrary
+    var id: Self { self }
+}
 
 struct AddEntryView: View {
     @Binding var selectedImage: UIImage?
-    @Binding var entries: [CatEntry]
+    @State private var showConfirmationDialog = false
+    @Binding var entries: [PetEntry]
     @Environment(\.dismiss) var dismiss
+    @State private var imageSource: ImageSource?
     @State private var selectedDate = Date()
     @State private var notes: String = ""
     @State private var petNames: String = ""
     @State private var selectedItem: PhotosPickerItem? // Use PhotosPickerItem
     @State private var showImagePicker = false
     @State private var showActionSheet = false  // To show the action sheet
-    @State private var imagePickerSourceType: UIImagePickerController.SourceType = .photoLibrary
-
+//    @State private var imagePickerSourceType: UIImagePickerController.SourceType = .photoLibrary
+    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
-                DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
+                DatePicker("Date",selection: $selectedDate, displayedComponents: .date)
+                    .font(.custom("DynaPuff", size: 20))
+                    .foregroundColor(Color(.mymutedpurple))
                 
                 TextField("Notes", text: $notes)
+                    .font(.custom("DynaPuff", size: 20))
+                    .foregroundColor(Color(.mymutedpurple))
                 
                 TextField("Pet Names (comma-separated)", text: $petNames)
+                    .font(.custom("DynaPuff", size: 20))
+                    .foregroundColor(Color(.mymutedpurple))
                 
-                if let selectedImage = selectedImage {
-                    Image(uiImage: selectedImage)
-                        .resizable()
-                        .scaledToFit()
+                Button("Add Photo", systemImage: "camera") {
+                    showConfirmationDialog = true
                 }
-                
-                Button("Add Photo") {
-                                    showActionSheet = true // Show action sheet for source selection
-                                }
-                                .actionSheet(isPresented: $showActionSheet) {
-                                    ActionSheet(title: Text("Choose Photo Source"), message: nil, buttons: [
-                                        .default(Text("Camera")) {
-                                            imagePickerSourceType = .camera
-                                            showImagePicker = true
-                                        },
-                                        .default(Text("Photo Library")) {
-                                            imagePickerSourceType = .photoLibrary
-                                            showImagePicker = true
-                                        },
-                                        .cancel()
-                                    ])
-                                }
-                                .sheet(isPresented: $showImagePicker) {
-                                    ImagePicker(selectedImage: $selectedImage, sourceType: imagePickerSourceType)
-                                }
-
-                Button("Save Entry") {
-                                    let newEntry = CatEntry(
-                                        date: selectedDate,
-                                        photo: selectedImage != nil ? Image(uiImage: selectedImage!) : nil,
-                                        notes: notes,
-                                        pets: petNames.components(separatedBy: ",")
-                                    )
-                                    entries.append(newEntry)
-                                    dismiss()
-                                }
-                    
+                .font(.custom("DynaPuff", size: 20))
+                .foregroundColor(Color(.hookersgreen))
+                .labelStyle(.iconOnly)
+                .padding()
+                .confirmationDialog("Choose Photo Source", isPresented: $showConfirmationDialog, titleVisibility: .visible) {
+                    Button("Camera") {
+                        imageSource = .camera
+                    }
+                    Button("Photo Library") {
+                        imageSource = .photoLibrary
+                    }
+                    Button("Cancel", role: .cancel) { }
                 }
-                    .navigationTitle("New Entry")
+                .sheet(item: $imageSource) { source in
+                    let sourceType: UIImagePickerController.SourceType = (source == .camera) ? .camera : .photoLibrary
+                    ImagePicker(sourceType: sourceType, selectedImage: $selectedImage)
+                }
             }
         }
+        if selectedImage != nil {
+            Button("Save Entry") {
+                let newEntry = PetEntry(
+                    date: selectedDate,
+                    photo: selectedImage != nil ? Image(uiImage: selectedImage!) : nil,
+                    notes: notes,
+                    pets: petNames.components(separatedBy: ",")
+                )
+                entries.append(newEntry)
+                dismiss()
+            }
+        } else {
+            Text("Select a photo first!")
+                .font(.custom("DynaPuff", size: 15))
+                .foregroundColor(Color(.mylightpink))
+        }
     }
+}
