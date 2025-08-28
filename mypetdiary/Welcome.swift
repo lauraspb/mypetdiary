@@ -16,7 +16,6 @@ struct Welcome: View {
     @State private var showImagePicker = false
     @State private var imageSource:
     UIImagePickerController.SourceType = .photoLibrary
-    @State private var selectedImage: UIImage?
     
     var body: some View {
         VStack {
@@ -71,7 +70,7 @@ struct Welcome: View {
             }
         }
         
-        if let image = selectedImage {
+        if let image = inputImage {
             Image(uiImage: image)
                 .resizable()
                 .scaledToFit()
@@ -85,7 +84,7 @@ struct Welcome: View {
                     if let inputImage = inputImage, let imageData = inputImage.jpegData(compressionQuality: 0.8) {
                         UserDefaults.standard.set(imageData, forKey: "profilePicture")
                     }
-                    isFirstLaunch = true
+                    isFirstLaunch = false
                 }
                 .font(.custom("DynaPuff", size: 40))
                 .multilineTextAlignment(.center)
@@ -119,7 +118,7 @@ struct Welcome: View {
                 }
             }
             .sheet(isPresented: $showImagePicker) {
-                ImagePicker(sourceType: self.imageSource, selectedImage: $selectedImage)
+                ImagePicker(sourceType: self.imageSource, selectedImage: $inputImage)
             }
         }
             

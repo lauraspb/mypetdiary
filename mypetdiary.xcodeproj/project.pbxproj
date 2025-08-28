@@ -414,8 +414,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mypetdiary/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSCameraUsageDescription = "To allow you to take photos of your pets for your diary entries";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "To enable you to import photos of your pet from your library.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "To allow you to take photos of your cats for your diary entries";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "To enable you to import photos of your cat from your library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -448,8 +448,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mypetdiary/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSCameraUsageDescription = "To allow you to take photos of your pets for your diary entries";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "To enable you to import photos of your pet from your library.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "To allow you to take photos of your cats for your diary entries";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "To enable you to import photos of your cat from your library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
